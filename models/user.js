@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-//const thoughtSchema = require('./thought');
 
 const userSchema = new Schema(
     {
@@ -34,10 +33,9 @@ const userSchema = new Schema(
             virtuals: true
         },
         id: false
-        //virtual called friendCount gets length of user's friends array on query
     }
 );
-//CANNOT GET VIRTUALS TO WORK ANYWHERE
+
 userSchema
 .virtual('friendCount')
 .get(function() { return this.friends.length });

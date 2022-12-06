@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const date = require('dayjs');
 
 const thoughtSchema = new Schema(
     {
@@ -11,8 +12,7 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            
-            //getter method to format time on query
+            get: v => date(v).format('MM/DD/YYYY h:mmA')
         },
         username: {
             type: String,
@@ -27,14 +27,13 @@ const thoughtSchema = new Schema(
     },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            getters: true
         },
         id: false
-        //virtual called reactionCount that gets length of thoughts reactions array on query
     }
 );
 
-//CANNOT FIGURE OUT HOW TO FORMAT TIME ANYWHERE
 thoughtSchema
 .virtual('reactionCount')
 .get(function() { return this.reactions.length });

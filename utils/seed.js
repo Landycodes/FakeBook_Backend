@@ -29,7 +29,7 @@ connection.once('open', async () => {
         })
     };
 
-    await User.collection.insertMany(users);
+    await User.create(users);
     await Thought.create(thoughts)
 
     console.table(users);
