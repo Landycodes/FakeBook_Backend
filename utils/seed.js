@@ -25,7 +25,7 @@ connection.once('open', async () => {
 
         thoughts.push({
             thoughtText: randomThought(1),
-            username: username.split(' ')[0]
+            username: username
         })
     };
 
