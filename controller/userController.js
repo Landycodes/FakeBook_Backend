@@ -13,6 +13,7 @@ module.exports  = {
         User.findOne({_id: req.params.userId})
         .select('-__v')
         .populate('thoughts')
+        .populate('friends')
         .then((user) =>
         !user
           ? res.status(404).json({ message: 'User ID not found' })
@@ -21,19 +22,28 @@ module.exports  = {
       .catch((err) => res.status(500).json(err));
     },
     //POST api/users
+    /*JSON BODY
+      {
+        "username": "",
+	    "email": ""
+    } */
     createUser(req, res) {
         User.create(req.body)
         .then((UserData) => res.json(UserData))
         .catch((err) => res.status(500).json(err))
     },
     //PUT api/users/:userId
+    /*JSON BODY
+    {
+        "anyObjfromThoughtId": "NewValue"
+    } */
     updateUser(req, res) {
         User.findOneAndUpdate({_id: req.params.userId}, req.body)
         .select('-__v')
         .then((UserData) =>{ 
             !UserData
                 ? res.status(404).json({ message: 'User ID not found' })
-                : res.json({message: `User ${UserData._id} has been updated!`})
+                : res.json({message: `User ${UserData._id} has been updated! 🎉`})
         })
         .catch((err) => res.status(500).json(err))
     },
@@ -46,10 +56,11 @@ module.exports  = {
             !UserData
                 ? res.status(404).json({ message: 'User ID not found' })
                 : Thought.deleteMany({username: UserData.username})
-                .then(() => res.json({message: `User has been deleted!`}))
+                .then(() => res.json({message: `User and user thoughts have been deleted!`}))
         })
         .catch((err) => res.status(500).json(err))  
     },
+    //POST api/users/:userId/friends/:friendsId
     addFriend(req, res) {
         User.findOneAndUpdate(
             {_id: req.params.userId},
@@ -60,11 +71,12 @@ module.exports  = {
             .then((userData) => {
                 !userData
                     ? res.json(404).json({message: 'friendship not made :('})
-                    : res.json({message: 'friendship has been established :)'})
+                    : res.json({message: 'friendship has been established :) 🎉'})
             })
             .catch((err) => res.status(500).json(err))
 
     },
+    // DELETE api/users/:userId/friends/:friendsId
     removeFriend(req, res) {
         User.findOneAndUpdate(
             {_id: req.params.userId},

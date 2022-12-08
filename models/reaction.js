@@ -1,11 +1,11 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types } = require('mongoose');
+const date = require('dayjs');
 
 const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            default: new Schema.Types.ObjectId
-            //Default value is set to a new ObjectId
+            default: () => new Types.ObjectId()
         },
         reactionBody: {
             type: String,
@@ -18,13 +18,17 @@ const reactionSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now
-            //getter method to format timestamp on query
+            default: Date.now,
+            get: v => date(v).format('MM/DD/YYYY h:mmA')
         }
+    },
+    {
+        toJSON: {
+            getters: true
+        },
+        id: false
     }
 );
-//I DONT THINK THIS MODEL IS SUPPOSED TO BE YEAR
 
-const Reaction = model('reaction', reactionSchema);
 
-// module.exports = Reaction;
+module.exports = reactionSchema;
