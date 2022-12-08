@@ -21,7 +21,7 @@ router.route('/:thoughtId')
 router.route('/:thoughtId/reaction')
 .post(newReaction);
 
-router.route('/:thoughtid/reaction/:reactionId')
+router.route('/:thoughtId/reaction/:reactionId')
 .delete(deleteReaction);
 
 module.exports = router;

@@ -13,7 +13,7 @@ connection.once('open', async () => {
     const users = [];
     const thoughts = [];
 
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 3; i++){
         let newAccount = new randomAccount;
         const username = newAccount.username;
         const email = newAccount.email;
@@ -36,28 +36,4 @@ connection.once('open', async () => {
     console.table(thoughts)
     console.info('Seeding complete! 🌱');
     process.exit(0);
-})
-
-//VIRTUAL IS CREATED USING ROUTE POST BUT NOT WHEN USING SEEDS
-/*EXAMPLE FROM POST API/USERS 
-   SEND {
-"username": "Andrew Landry",
-	"email": "landry@email.com"
-}
-RETRIEVED
-{
-	"username": "Andrew Landry",
-	"email": "landry@email.com",
-	"thoughts": [],
-	"friends": [],
-	"_id": "638f13ba809a36f73942390b",
-	"__v": 0
-}*/
-//EXAMPLE FROM SEED
-/* 	{
-		"thoughts": [],
-		"friends": [],
-		"_id": "638f0a78b445d2140f18afe4",
-		"username": "Aaron Zerah",
-		"email": "Zerah@email.com"
-	}*/
+});

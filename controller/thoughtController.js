@@ -95,5 +95,4 @@ module.exports = {
         })
         .catch((err) => res.status(500).json(err))       
     }
-}
-//delete reaction keeps giving error 404 because of $pull
+};

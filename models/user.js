@@ -4,7 +4,7 @@ const userSchema = new Schema(
     {
         username: {
             type: String,
-            //unique: true,
+            unique: true,
             required: true,
             trim: true
 
@@ -12,7 +12,7 @@ const userSchema = new Schema(
         email: {
             type: String,
             required: true,
-            //unique: true,
+            unique: true,
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email']
         },
         thoughts: [
