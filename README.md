@@ -13,6 +13,6 @@ A backend server for a social media app using express.js for routing and mongoDB
   
   ## NOTE
   At 9:10 minutes in the video I put the users ID instead of the username. both instances will work but the proper input would be the actual
-  users name
+  username
   
- ## [Demo Video]()
+ ## [Demo Video](https://drive.google.com/file/d/1vQTXCjJH23u7JKlGjPljnGus1ViwLa4T/view?usp=sharing)
