@@ -16,3 +16,4 @@ A backend server for a social media app using express.js for routing and mongoDB
   username
   
  ## [Demo Video](https://drive.google.com/file/d/1vQTXCjJH23u7JKlGjPljnGus1ViwLa4T/view?usp=sharing)
+![Fakebook_img](https://user-images.githubusercontent.com/103873915/206605899-cf777776-24ac-4e67-bd24-5ef55c38cf4e.PNG)
